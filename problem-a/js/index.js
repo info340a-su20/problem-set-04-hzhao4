@@ -3,7 +3,7 @@
 /** Basic Types */
 
 //Define a new variable `motto` for the value "The iSchool is my school"
-let motto = "The iSchool is my school"
+let motto = "The iSchool is my school";
 
 //Log out the motto
 console.log(motto);
@@ -24,32 +24,32 @@ console.log(num >= 0);
 //the words "Information School". The new value should be re-assigned to the
 //`motto` variable.
 //Log out the updated motto.
-var newMotto = motto.replace("iSchool", "Information School")
+var newMotto = motto.replace("iSchool", "Information School");
 console.log(newMotto);
 
 //Calculate the ratio between the length of the updated motto and the length of
 //the old (which you had saved in a variable!). Log out this ratio as a
 //percentage with two decimal places of precision (e.g., `"123.45%"`).
 //You can use the `.toFixed()` Number method to specify the precision.
-let ratio = newMotto.length / mottoLength;
-ratio.toFixed(2);
+let ratio = newMotto.length / mottoLength * 100;
+console.log(ratio.toFixed(2) + '%');
 
 /** Arrays **/
 
 //Create an array `numbers` that contains these 10 numbers:
 //    1 4 1 5 9 2 6 5 3 5
 //Log out the array.
-let numbers = ['1', '4', '1', '5', '9', '2', '6', '5', '3', '5']
+let numbers = [1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
 console.log(numbers);
 
 //Use bracket notation to change the `4` in the array to a `4.2`.
 //Log out the updated array.
-numbers[1] = '4.2';
+numbers[1] = 4.2;
 console.log(numbers);
 
 //Add the number 3 to the END of the array.
 //Log out the updated array.
-numbers[10] = '3';
+numbers[10] = 3;
 console.log(numbers);
 
 //Find the median (middle) value of the numbers in the array.
@@ -57,7 +57,7 @@ console.log(numbers);
 //You can use the `Math.floor()` function to round to a whole number.
 //Log out the median value.
 let sortedNumbers = numbers.sort();
-let median = Math.floor(sortedNumbers[5]);
+let median = sortedNumbers[Math.floor(sortedNumbers.length / 2)];
 console.log(median);
 
 /** Objects **/
@@ -66,7 +66,7 @@ console.log(median);
 //with properties:
 //  `x` (coordinate) of 30, `y` of 50, `width` of 100, `height` of 50
 //Log out the rectangle object
-let rect = {'x':30, 'y':50, 'width':100, 'height':50}
+let rect = { x: 30, y: 50, width: 100, height: 50 };
 console.log(rect);
 
 //Log out the x- and y- coordinates of the rectangle (its location). Your output
@@ -88,7 +88,7 @@ console.log(area);
 //  `cy` of 43,
 //  `radius` equal to the LAST value in the (sorted) `numbers` array.
 //Log out the circle
-let circle = {'cx': 34, 'cy': 43, 'radius':sortedNumbers[sortedNumbers.length-1]}
+let circle = { cx: 34, cy: 43, radius :sortedNumbers[sortedNumbers.length-1]};
 console.log(circle);
 
 //Create an array `shapes` that represents a list of shapes. The array should
@@ -101,14 +101,13 @@ console.log(shapes);
 //variable name) representing a right triangle to the `shapes` array.
 //The triangle should have a `base` of 33 and a `height` of 44.
 //Log out the updated shapes array.
-rightTriangle = {'base':33, 'height':44}
-shapes[""] = rightTriangle;
+let rightTriangle = { base: 33, height: 44 };
+shapes[shapes.length] = rightTriangle;
 console.log(shapes);
 
 //Log out the triangle's `hypotenuse` property (don't calculate it, just log out
 //the current property value!). What do you get?
-let hypotenuse = Math.sqrt(Math.square(rightTriangle.base) + Math.square(rightTriangle.height))
-console.log(hypotenuse);
+console.log(rightTriangle.hypotenuse);
 
 //Assign the triangle inside the `shapes` array a 'hypotenuse' property of `55`.
 //Log out the `shapes` array again.
