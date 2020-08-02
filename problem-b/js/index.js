@@ -94,11 +94,12 @@ function getLetterFrequencies(word) {
 
     You can log out the `deck` to check your work! */
     var deck = [];
-    let count = 0;
     let suits = ["hearts", "diamonds", "clubs", "spades"];
-    for (let i = 0; i < 13; i++) {
-      for (let j = 0; j < 4; j++) {
-        deck.push({s : suits[0], r : j+2});
+    let rank = 13;
+    for (let i = 0; i < rank; i++) {
+      let count = 0;
+      for (let j = 0; j < suits.length; j++) {
+        deck.push({s : suits[j], r : j+2});
       }
       count++;
     }
@@ -110,19 +111,42 @@ function getLetterFrequencies(word) {
    objects (e.g., a Poker hand) and returns whether or not the Queen of Hearts
    is in that array.
    Hint: use a loop to check each card. */
-
+function containsQueenOfHearts(cards) {
+  for (let i = 0; i < cards.length; i++) {
+    if (cards[i].suit == "hearts" && cards[i].rank == "12") {
+      return true;
+    }
+  }
+  return false;
+}
 
 
 /* Define a function `getHighCard()` that takes in an array of "card" objects
   and returns the card object with the highest value. The "high card" is the one
   with the highest rank. Cards of different suits but the same rank are
   considered to have the same value, and either is a valid result */
-
+function getHighCard(cards) {
+  let max = cards[0].rank;
+  for (let i = 1; i < cards.length; i++) {
+    if (cards[i].rank > max) {
+      max = cards[i].rank;
+    }
+  }
+  return max;
+}
 
 
 /* Define a function `isFlush()` that takes in an array of "card" objects and
    returns whether or not the cards all have the same _suit_. */
-
+function isFlush(cards) {
+  let suit = cards[0].suit;
+  for (let i = 1; i < cards.length; i++) {
+    if (cards[i].suit != suit) {
+      return false;
+    }
+  }
+  return true;
+}
 
 
 /* Extra challenge: define a function `hasPair()` that takes in an array of
@@ -130,8 +154,6 @@ function getLetterFrequencies(word) {
    cards with the same _rank_) in the array.
    Double challenge: return the rank of the pair of cards with the highest rank
    (e.g., if the hand contains more than one pair!) */
-
-
 
 //Make functions and variables available to tester. DO NOT MODIFY THIS.
 if(typeof module !== 'undefined' && module.exports){
