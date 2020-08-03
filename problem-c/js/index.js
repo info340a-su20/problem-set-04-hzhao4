@@ -86,7 +86,11 @@ gamesLost.forEach(game => {
 //of games where UW had at least one fumble.
 //Log out HOW MANY games included fumbles.
 let fumbleCheck = huskyGames2016.filter(function(game) {
-  return game.fumble >= 1;
+  if (game.fumbles > 0) {
+    return true;
+  } else {
+    return false;
+  }
 });
 console.log(fumbleCheck.length);
 
@@ -95,10 +99,10 @@ console.log(fumbleCheck.length);
 //Your function should handle the case where the _first_ game has no
 //`passing_yards` property, in which case it should return the second game.
 function mostYardsPassing(game1, game2) {
-  if (game1.passing_yards == 0 || game1.passing_yards < game2.passing_yards) {
-    return game2;
+  if (game1.passing_yards > game2.passing_yards) {
+    return game1;
   }
-  return game1;
+  return game2;
 }
 
 //Create a variable `mostPassingGame` that refers to the "game" that had the most
@@ -110,6 +114,7 @@ function mostYardsPassing(game1, game2) {
 //
 //Log out the game with the most passing yards.
 let mostPassingGame = huskyGames2016.reduce(mostYardsPassing, '{}');
+console.log(mostPassingGame);
 
 //It would be useful to be able to apply multiple "filter criteria" to an array
 //of games at once.
@@ -138,7 +143,7 @@ let fumbledAndLostFilter = makeCombinedFilter(huskiesLost, function(game) {
     return true;
   }
   return false;
-})
+});
 
 //Create an array of games that UW lost with fumbles. Use the
 //`fumbledAndLostFilter()` function as a callback to the `filter()` method.
